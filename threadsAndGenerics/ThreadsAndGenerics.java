@@ -8,7 +8,7 @@ public class ThreadsAndGenerics {
     }
 }
 
-class Response extends GenericClass<Integer, String> {
+class Response extends GenericClass<String> {
 
     public String getResponse(Integer i)  throws Exception {
         return getGenericResponse(() -> getSingleThreadResponse(i));
@@ -19,16 +19,12 @@ class Response extends GenericClass<Integer, String> {
     }
 }
 
-class GenericClass <T,U>  {
+class GenericClass <U>  {
   
-    public U getGenericResponse(GenericInterface<U> funcInterface) throws Exception {
+    public U getGenericResponse(Callable<U> funcInterface) throws Exception {
         ExecutorService ex = Executors.newFixedThreadPool(10);
         Future<U> future = ex.submit(funcInterface);
         U res = future.get();
         return res;
-    }
-
-    interface GenericInterface<U> extends Callable<U>{
-        U call();
     }
 } 
