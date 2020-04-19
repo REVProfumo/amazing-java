@@ -1,4 +1,4 @@
-package amazingJava;
+package threads_and_generics;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -22,7 +22,7 @@ class Response extends GenericClass<String> {
     
     public List<String> getSingleThreadResponse(List<Integer> list) {
         return list.stream().map(i -> i.toString()).collect(Collectors.toList());
-    }
+   }
 }
 
 class GenericClass<U>  {
@@ -36,4 +36,4 @@ class GenericClass<U>  {
         }
         return res;
     }
-} 
+}
